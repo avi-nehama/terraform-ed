@@ -1,8 +1,8 @@
 variable "customer_name" {
-    type = string
+  type = string
 }
 
 variable "location" {
-    type = string
-    default = "westus2"
+  type    = string
+  default = "westus2"
 }

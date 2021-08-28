@@ -31,13 +31,39 @@ resource "azurerm_subnet" "mng_subnet" {
   address_prefixes     = ["10.0.2.0/24"]
 }
 
+resource "azurerm_network_security_group" "nsg" {
+  name                = "example-nsg"
+  location            = var.location
+  resource_group_name = azurerm_resource_group.rg.name
+
+  security_rule {
+    name                       = "allowHTTPSInbound"
+    priority                   = 100
+    direction                  = "Inbound"
+    access                     = "Allow"
+    protocol                   = "Tcp"
+    source_port_range          = "*"
+    destination_port_range     = "443"
+    source_address_prefix      = "*"
+    destination_address_prefix = "*"
+  }
+}
+
+resource "azurerm_subnet_network_security_group_association" "mng_subnet_nsg_association" {
+  subnet_id                 = azurerm_subnet.mng_subnet.id
+  network_security_group_id = azurerm_network_security_group.nsg.id
+}
+
+
+
 module "ovoc" {
   source = "../modules/ovoc"
 
-  env_name = var.customer_name
-  location = var.location
+  env_name  = var.customer_name
+  location  = var.location
   subnet_id = azurerm_subnet.mng_subnet.id
 }
+
 
 # ---\/-----
 # 2*SBC
