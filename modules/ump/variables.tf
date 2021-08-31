@@ -15,3 +15,14 @@ variable "ump_instance_type" {
     default = "Standard_D2a_v4" 
 }
 
+variable "ump_admin_username" {
+    type = string
+    default = "umpZdmin"
+    sensitive = true
+}
+
+variable "ump_admin_password" {
+    type = string
+    default = "pwd@4ump"
+    sensitive = true
+}

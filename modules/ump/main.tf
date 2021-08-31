@@ -17,8 +17,8 @@ resource "azurerm_linux_virtual_machine" "ump_vm" {
   resource_group_name             = var.resource_group_name
   size                            = var.ump_instance_type
   disable_password_authentication = false
-  admin_username                  = "adminuser"
-  admin_password                  = "mzsond6#"
+  admin_username                  = var.ump_admin_username
+  admin_password                  = var.ump_admin_password
   network_interface_ids           = [
     azurerm_network_interface.ump_nic.id
   ]
