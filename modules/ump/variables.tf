@@ -10,7 +10,8 @@ variable "subnet_id" {
     type = string
 }
 
-variable "ovoc_vm_instance_type" {
-    type = string
-    default = "Standard_D8as_v4"
+variable "ump_instance_type" {
+    type    = string
+    default = "Standard_D2a_v4" 
 }
+
