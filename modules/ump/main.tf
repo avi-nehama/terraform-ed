@@ -1,5 +1,5 @@
 resource "azurerm_network_interface" "ump_nic" {
-  name                = "stck_mgr_nic"
+  name                = "ump_nic"
   location            = var.location
   resource_group_name = var.resource_group_name
 

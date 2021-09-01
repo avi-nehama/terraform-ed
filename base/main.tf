@@ -18,7 +18,8 @@ resource "azurerm_resource_group" "rg" {
 }
 
 module "lc_network" {
-  source = "../modules/lc_network"
+  source  = "../modules/lc_network"
+  count   = var.create_network ? 1 : 0
 
   resource_group_name = var.customer_name
   location            = var.location
@@ -29,7 +30,7 @@ module "ovoc" {
 
   resource_group_name   = var.customer_name
   location              = var.location
-  subnet_id             = module.lc_network.mng_subnet_id
+  subnet_id             = var.create_network? module.lc_network[0].mng_subnet_id : var.mng_subnet_id
 }
 
 module "ump" {
@@ -37,5 +38,5 @@ module "ump" {
 
   resource_group_name   = var.customer_name
   location              = var.location
-  subnet_id             = module.lc_network.mng_subnet_id
+  subnet_id             = var.create_network? module.lc_network[0].mng_subnet_id : var.mng_subnet_id
 }
