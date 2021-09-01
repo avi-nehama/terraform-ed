@@ -13,7 +13,7 @@ resource "azurerm_network_interface" "ovoc-nic" {
 
 
 resource "azurerm_linux_virtual_machine" "ovoc_vm" {
-  name                    = "ovoc-vm"
+  name                    = "${var.resource_group_name}-ovoc-vm"
   location                = var.location
   resource_group_name     = var.resource_group_name
   size                    = var.ovoc_vm_instance_type

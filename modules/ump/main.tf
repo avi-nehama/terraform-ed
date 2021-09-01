@@ -12,7 +12,7 @@ resource "azurerm_network_interface" "ump_nic" {
 
 
 resource "azurerm_linux_virtual_machine" "ump_vm" {
-  name                            = "ump-vm"
+  name                            = "${var.resource_group_name}-ump-vm"
   location                        = var.location
   resource_group_name             = var.resource_group_name
   size                            = var.ump_instance_type
