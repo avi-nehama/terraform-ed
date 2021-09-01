@@ -14,7 +14,7 @@ variable "create_network" {
 }
 
 variable "mng_subnet_id" {
-  type          = string
-  default       = "/subscriptions/<subs_id>/..."
-  description   = "Override this variable value when you want to deploy the resources into an existing network"
+  type        = string
+  default     = "/subscriptions/<subs_id>/..."
+  description = "Override this variable value when you want to deploy the resources into an existing network"
 }
