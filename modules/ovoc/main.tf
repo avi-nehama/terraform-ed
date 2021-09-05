@@ -1,4 +1,11 @@
-resource "azurerm_network_interface" "ovoc-nic" {
+resource "azurerm_public_ip" "ovoc_public_ip" {
+  name                = "${var.resource_group_name}-ovoc-public-ip"
+  resource_group_name = var.resource_group_name
+  location            = var.location
+  allocation_method   = "Dynamic"
+}
+
+resource "azurerm_network_interface" "ovoc_nic" {
   name                            = "ovoc-nic"
   location                        = var.location
   resource_group_name             = var.resource_group_name
@@ -7,8 +14,8 @@ resource "azurerm_network_interface" "ovoc-nic" {
     name                          = "internal"
     subnet_id                     = var.subnet_id
     private_ip_address_allocation = "Dynamic"
+    public_ip_address_id          = azurerm_public_ip.ovoc_public_ip.id
   } 
-  # todo: add public IP
 }
 
 
@@ -21,7 +28,7 @@ resource "azurerm_linux_virtual_machine" "ovoc_vm" {
   admin_username          = var.ovoc_admin_username
   admin_password          = var.ovoc_admin_password
   network_interface_ids   = [
-    azurerm_network_interface.ovoc-nic.id
+    azurerm_network_interface.ovoc_nic.id
   ]
 
   # admin_ssh_key {
