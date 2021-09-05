@@ -12,7 +12,7 @@ variable "subnet_id" {
 
 variable "ump_instance_type" {
     type    = string
-    default = "Standard_D2a_v4" 
+    default = "Standard_D4s_v3" 
 }
 
 variable "ump_admin_username" {

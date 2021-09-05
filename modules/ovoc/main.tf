@@ -1,8 +1,8 @@
 resource "azurerm_network_interface" "ovoc-nic" {
-  name                = "ovoc-nic"
-  location            = var.location
-  resource_group_name = var.resource_group_name
-
+  name                            = "ovoc-nic"
+  location                        = var.location
+  resource_group_name             = var.resource_group_name
+  enable_accelerated_networking   = true
   ip_configuration {
     name                          = "internal"
     subnet_id                     = var.subnet_id
@@ -49,7 +49,7 @@ resource "azurerm_linux_virtual_machine" "ovoc_vm" {
 }
 
 resource "azurerm_managed_disk" "ovoc_data_disk" {
-  name                 = "ovoc-data-disk"
+  name                 = "${var.resource_group_name}-ovoc-data-disk"
   location             = var.location
   resource_group_name  = var.resource_group_name
   storage_account_type = "Premium_LRS"
