@@ -18,3 +18,8 @@ variable "mng_subnet_id" {
   default     = "/subscriptions/<subs_id>/..."
   description = "Override this variable value when you want to deploy the resources into an existing network"
 }
+
+variable "boot_diagnotstics_storage_account_uri" {
+  type        = string
+  default     = "TBD"
+}

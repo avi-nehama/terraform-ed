@@ -44,4 +44,8 @@ resource "azurerm_windows_virtual_machine" "ump_vm" {
     sku       = "2019-Datacenter"
     version   = "latest"
   }
+
+  boot_diagnostics {
+    storage_account_uri = var.storage_account_uri
+  }
 }

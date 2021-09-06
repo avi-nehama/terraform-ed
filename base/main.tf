@@ -31,6 +31,7 @@ module "ovoc" {
   resource_group_name = azurerm_resource_group.rg.name
   location            = azurerm_resource_group.rg.location
   subnet_id           = var.create_network ? module.lc_network[0].mng_subnet_id : var.mng_subnet_id
+  storage_account_uri = var.boot_diagnotstics_storage_account_uri
 }
 
 module "ump" {
@@ -39,4 +40,5 @@ module "ump" {
   resource_group_name = azurerm_resource_group.rg.name
   location            = azurerm_resource_group.rg.location
   subnet_id           = var.create_network ? module.lc_network[0].mng_subnet_id : var.mng_subnet_id
+  storage_account_uri = var.boot_diagnotstics_storage_account_uri
 }

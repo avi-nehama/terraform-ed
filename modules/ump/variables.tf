@@ -26,3 +26,8 @@ variable "ump_admin_password" {
     default = "pwd@4ump"
     sensitive = true
 }
+
+variable "storage_account_uri" {
+    type = string
+}
+

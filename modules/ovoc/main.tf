@@ -53,6 +53,10 @@ resource "azurerm_linux_virtual_machine" "ovoc_vm" {
     publisher = "audiocodes"
     product   = "audcovoc"
   }
+
+  boot_diagnostics {
+    storage_account_uri = var.storage_account_uri
+  }
 }
 
 resource "azurerm_managed_disk" "ovoc_data_disk" {

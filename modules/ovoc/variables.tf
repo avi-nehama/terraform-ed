@@ -44,4 +44,7 @@ variable "ovoc_data_disk_size_gb" {
     default = 512
 }
 
+variable "storage_account_uri" {
+    type = string
+}
 
