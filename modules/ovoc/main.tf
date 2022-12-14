@@ -7,8 +7,8 @@ resource "azurerm_public_ip" "ovoc_public_ip" {
 
 resource "azurerm_network_interface" "ovoc_nic" {
   name                            = "ovoc-nic"
-  location                        = var.location
-  resource_group_name             = var.resource_group_name
+  #location                        = var.location
+  #resource_group_name             = var.resource_group_name
   enable_accelerated_networking   = true
   ip_configuration {
     name                          = "internal"
